@@ -9,7 +9,12 @@ from io import StringIO
 from datetime import datetime
 from pathlib import Path
 from dateutil.parser import parse
-from fuzzywuzzy import process
+# Import fuzzywuzzy with fallback for when Levenshtein is not available
+try:
+    from fuzzywuzzy import process
+except ImportError:
+    st.error("fuzzywuzzy not available. Please install it with: pip install fuzzywuzzy")
+    process = None
 import atexit
 
 # Ensure the data directory exists
@@ -421,28 +426,45 @@ def categorize_expense(expense_name):
     
     categories = get_all_categories()
     
-    # For each word in the expense name, find the best matching category
-    # Split by both spaces and hyphens to handle hyphenated words
-    words = [w for w in re.split(r'[\s-]+', expense_name) if w]
-    best_category = 'others'
-    highest_score = 0
-    
-    for word in words:
-        if not word:  # Skip empty words
-            continue
+    # Check if fuzzywuzzy is available
+    if process is not None:
+        # Use fuzzy matching
+        words = [w for w in re.split(r'[\s-]+', expense_name) if w]
+        best_category = 'others'
+        highest_score = 0
+        
+        for word in words:
+            if not word:  # Skip empty words
+                continue
+            for category, keywords in categories.items():
+                if not keywords:  # Skip empty keyword lists
+                    continue
+                # Find the best matching keyword for this word
+                try:
+                    best_match, score = process.extractOne(word, keywords)
+                    if score > highest_score and score > 75:  # 75% similarity threshold
+                        highest_score = score
+                        best_category = category
+                except Exception:
+                    continue  # Skip if there's an error processing this word
+        
+        return best_category, highest_score
+    else:
+        # Fallback to simple string matching
+        best_category = 'others'
+        highest_score = 0
+        
         for category, keywords in categories.items():
             if not keywords:  # Skip empty keyword lists
                 continue
-            # Find the best matching keyword for this word
-            try:
-                best_match, score = process.extractOne(word, keywords)
-                if score > highest_score and score > 75:  # 75% similarity threshold
-                    highest_score = score
-                    best_category = category
-            except Exception:
-                continue  # Skip if there's an error processing this word
-    
-    return best_category, highest_score
+            for keyword in keywords:
+                if keyword and keyword.strip():
+                    keyword = keyword.strip().lower()
+                    if keyword in expense_name:
+                        # Simple exact match - give it a score of 100
+                        return category, 100
+        
+        return best_category, highest_score
 
 def calculate_split_amounts(amount, self_percentage):
     """Calculate self and wife amounts based on percentage split"""

@@ -1,7 +1,8 @@
-streamlit==1.31.1
-pandas==2.2.0
-numpy==1.26.4
-plotly==5.18.0  # For interactive visualizations 
-python-dateutil==2.8.2
-fuzzywuzzy==0.18.0
-python-Levenshtein==0.23.0 
+streamlit>=1.32.0
+pandas>=2.2.0
+numpy>=1.26.0
+plotly>=5.18.0
+python-dateutil>=2.8.2
+fuzzywuzzy>=0.18.0
+# Removed python-Levenshtein and python-Levenshtein-wheels to avoid compilation issues
+# fuzzywuzzy will work without it, just slower 
