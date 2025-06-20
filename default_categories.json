@@ -1,0 +1,52 @@
+{
+    "transport": [
+        "trans", "grab", "taxi", "bus", "mrt", "transport", "comfort", "gojek", "tada",
+        "parking", "ez-link", "ezlink", "transitlink", "uber", "petrol", "gas"
+    ],
+    "food": [
+        "food", "dining", "cafe", "coffee", "misato", "gongyuan", 
+        "kopitiam", "foodcourt", "mcdonald", "cheers",
+        "starbucks", "kfc", "subway", "sushi", "pizza", "burger", "hawker",
+        "eatery", "bistro", "bar", "pub", "deli", "bakery",
+        "heavenly wang", "liho", "chagee", "pokka", "candlenut", "madamangkk",
+        "tim hortons", "tea explorer", "stuffd", "crave", "yakun", "yhs",
+        "khao hom", "rung mama", "restaurant"
+    ],
+    "shopping": [
+        "shopping", "retail", "store", "mall", "shopee", "watson", "venus beauty", 
+        "jewel", "lazada", "amazon", "qoo10", "uniqlo", "zara", "courts", "ikea",
+        "fashion", "clothing", "accessories", "shoes", "boutique", "marketplace",
+        "taobao", "daiso", "j-mart", "nespresso"
+    ],
+    "utilities": [
+        "utilities", "power", "water", "electricity", "wireless", "liberty", "singtel",
+        "starhub", "m1", "sp group", "internet", "broadband", "mobile", "phone",
+        "zero1"
+    ],
+    "entertainment": [
+        "entertainment", "movie", "cinema", "games", "netflix", "spotify", "disney",
+        "theatre", "concert", "ticket", "show", "event", "bowling", "arcade",
+        "karaoke", "ktv", "zoo", "museum", "attraction"
+    ],
+    "healthcare": [
+        "clinic", "hospital", "medical", "healthcare", "aia", "dental", "pharmacy",
+        "doctor", "specialist", "health", "medicine", "consultation", "treatment",
+        "guardian", "unity", "wellness", "msig", "insurance"
+    ],
+    "groceries": [
+        "grocery", "supermarket", "market", "fairprice", "finest", "cold storage",
+        "sheng siong", "giant", "prime", "fresh", "produce", "meat", "seafood",
+        "vegetables", "fruits", "dairy", "pantry", "ntuc", "hypermarket"
+    ],
+    "fitness": [
+        "fitness", "gym", "workout", "sports", "exercise", "anytime fitn"
+    ],
+    "donations": [
+        "donation", "charity", "catholic foundation", "church"
+    ],
+    "digital_services": [
+        "google", "ecom", "ewallet", "digital", "online", "subscription",
+        "fatfreq", "hchain"
+    ],
+    "others": []
+} 
